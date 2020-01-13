@@ -3,16 +3,16 @@ cmake_minimum_required(VERSION 3.11.3)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
-project(start_cmake_project)
+project(yolo_object_detection)
 
-find_package(example 1.0 REQUIRED)
+find_package(opencv 4.1 REQUIRED)
 
-# Add dirs from external packages
 include_directories(
     include
+    ${OpenCV_INCLUDE_DIRS}
 )
-link_directories(${Example_LIBRARY_DIRS})
-add_definitions(${Example_DEFINITIONS})
+link_directories(${OpenCV_LIBRARY_DIRS})
+add_definitions(${OpenCV_DEFINITIONS})
 
 # Find all executables
 file(GLOB SOURCES src/*.cpp)
@@ -21,10 +21,10 @@ file(GLOB SOURCES src/*.cpp)
 add_subdirectory(thirdparty/googletest)
 
 # Add the testing executable
-add_executable(test test/utest_start_cmake_project.cpp)
+add_executable(test test/utest_queue_fps.cpp)
 
 target_link_libraries(test gtest_main)
 
 # Add project executable
-add_executable(start_cmake_project ${SOURCES})
-target_link_libraries(start_cmake_project ${Example_LIBRARIES})
+add_executable(yolo_object_detection ${SOURCES})
+target_link_libraries(yolo_object_detection ${OpenCV_LIBRARIES})
