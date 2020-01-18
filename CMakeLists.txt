@@ -7,13 +7,6 @@ project(yolo_object_detection)
 
 find_package(opencv 4.1 REQUIRED)
 
-include_directories(
-    include
-    ${OpenCV_INCLUDE_DIRS}
-)
-link_directories(${OpenCV_LIBRARY_DIRS})
-add_definitions(${OpenCV_DEFINITIONS})
-
 # Find all executables
 file(GLOB SOURCES src/*.cpp)
 
@@ -28,3 +21,11 @@ target_link_libraries(test gtest_main)
 # Add project executable
 add_executable(yolo_object_detection ${SOURCES})
 target_link_libraries(yolo_object_detection ${OpenCV_LIBRARIES})
+
+target_include_directories(yolo_object_detection PUBLIC
+    include
+    ${OpenCV_INCLUDE_DIRS}
+    )
+
+link_directories(${OpenCV_LIBRARY_DIRS})
+target_compile_definitions(yolo_object_detection PUBLIC ${OpenCV_DEFINITIONS})
