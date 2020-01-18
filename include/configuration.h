@@ -6,6 +6,7 @@
 #include <string>
 
 
+// TODO: Refactor hardcoded paths
 namespace Configuration {
 static constexpr std::string_view MODEL_PATH =
     "/Users/alvaro/github.com/yolo-object-detection/resources/models/yolov3.weights";
