@@ -2,8 +2,9 @@
 #define QUEUE_FPS_H
 
 #include <mutex>
-#include <opencv2/core.hpp>
 #include <queue>
+
+#include <opencv2/core.hpp>
 
 template <typename T>
 class QueueFps : private std::queue<T> {
