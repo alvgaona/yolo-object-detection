@@ -1,25 +1,24 @@
-#ifndef DISPLAY_H
-#define DISPLAY_H
+#ifndef WINDOW_H
+#define WINDOW_H
 
 #include <opencv2/opencv.hpp>
 #include <string>
 
 class Window {
  public:
-    Window(const std::string& name, float confidence_threshold);
-    ~Window();
+  Window(const std::string& name, float confidence_threshold);
+  ~Window() = default;
 
-    void Build();
-    void Show(cv::Mat& frame);
-    void DisplayInfo(unsigned int counter);
+  void Build();
+  void Show(cv::Mat& frame);
+  void DisplayInfo(cv::Mat& frame, float frames_fps, unsigned int frames_counter, float predictions_fps,
+                   unsigned int predictions_counter);
 
-private:
-    float confidence_threshold_;
-    std::string name_;
+ private:
+  static int confidence_threshold_;
+  std::string name_;
 
-    void Callback(int pos, void*);
+  static void OnChange(int pos, void*);
 };
-
-
 
 #endif
