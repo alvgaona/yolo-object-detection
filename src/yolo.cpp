@@ -63,8 +63,6 @@ void Yolo::CaptureFrames() {
   cv::Mat frame;
 
   while (true) {
-    //    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    std::cout << "Capturing Frames" << std::endl;
     *capturer_ >> frame;
 
     if (!frame.empty()) {
@@ -83,12 +81,10 @@ void Yolo::ProcessFrames() {
   data.rgb = Configuration::RGB;
   data.scale = Configuration::SCALE;
 
-  std::cout << "Processing Frames" << std::endl;
   while (true) {
     cv::Mat frame;
 
     if (!frames_->Empty()) {
-      std::cout << "Popping frame from queue" << std::endl;
       frame = frames_->Get();
     }
 

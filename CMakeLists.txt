@@ -5,7 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 project(yolo_object_detection)
 
-find_package(opencv 4.1 REQUIRED)
+find_package(OpenCV 4.1.2 REQUIRED)
 
 # Find all executables
 file(GLOB SOURCES src/*.cpp)
