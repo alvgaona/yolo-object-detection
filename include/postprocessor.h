@@ -1,5 +1,5 @@
-#ifndef POSTPROCESSOR_H
-#define POSTPROCESSOR_H
+#ifndef YOLO_OBJECT_DETECTION_POSTPROCESSOR_H
+#define YOLO_OBJECT_DETECTION_POSTPROCESSOR_H
 
 #include <opencv2/dnn.hpp>
 #include <opencv2/opencv.hpp>

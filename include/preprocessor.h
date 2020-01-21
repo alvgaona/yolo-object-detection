@@ -1,5 +1,5 @@
-#ifndef PREPROCESSOR_H
-#define PREPROCESSOR_H
+#ifndef YOLO_OBJECT_DETECTION_PREPROCESSOR_H
+#define YOLO_OBJECT_DETECTION_PREPROCESSOR_H
 
 #include <opencv2/opencv.hpp>
 

@@ -8,35 +8,26 @@ Yolo::Yolo() {
   predictions_ = std::make_unique<QueueFps<std::vector<cv::Mat>>>();
 }
 
-Yolo::~Yolo() {}
+Yolo::~Yolo() {
+  std::for_each(threads_.begin(), threads_.end(), [](std::thread& t) { t.join(); });
+}
 
-void Yolo::Run() {
+void Yolo::Run(std::filesystem::path& model_path, std::filesystem::path& config_path,
+               std::filesystem::path& classes_path, std::filesystem::path& input_path) {
   Window window("YOLO Object Detection", Configuration::THRESHOLD);
   window.Build();
 
-  auto file = std::string(Configuration::CLASSES_PATH);
-  std::ifstream ifs(file.c_str());
-  if (!ifs.is_open()) {
-    CV_Error(cv::Error::StsError, "File " + file + " not found");
-  }
-  std::string line;
-  while (std::getline(ifs, line)) {
-    classes_.emplace_back(line);
-  }
-  ifs.close();
+  LoadClasses(classes_path);
 
-  cv::String model_path(Configuration::MODEL_PATH);
-  cv::String config_path(Configuration::CONFIG_PATH);
-  Model model = Model::Init(model_path, config_path);
+  Model model = Model::Init(cv::String(model_path), cv::String(config_path));
   model_ = std::make_unique<Model>(std::move(model));
 
-  capturer_->open(cv::String(Configuration::INPUT));
+  capturer_->open(cv::String(input_path));
 
   StartFramesCapture();
   StartFramesProcessing();
 
   while (cv::waitKey(1) < 0) {
-
     if (predictions_->Empty()) {
       continue;
     }
@@ -51,8 +42,6 @@ void Yolo::Run() {
 
     window.Show(frame);
   }
-
-  std::for_each(threads_.begin(), threads_.end(), [](std::thread &t) { t.join(); });
 }
 
 void Yolo::StartFramesCapture() { threads_.emplace_back(std::thread(&Yolo::CaptureFrames, this)); }
@@ -103,4 +92,16 @@ void Yolo::ProcessFrames() {
       predictions_->Push({out});
     }
   }
+}
+
+void Yolo::LoadClasses(const std::filesystem::path& filepath) {
+  std::ifstream ifs(filepath.string());
+  if (!ifs.is_open()) {
+    CV_Error(cv::Error::StsError, "File " + filepath.string() + " not found");
+  }
+  std::string line;
+  while (std::getline(ifs, line)) {
+    classes_.emplace_back(line);
+  }
+  ifs.close();
 }

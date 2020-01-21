@@ -1,5 +1,5 @@
-#ifndef QUEUE_FPS_H
-#define QUEUE_FPS_H
+#ifndef YOLO_OBJECT_DETECTION_QUEUE_FPS_H
+#define YOLO_OBJECT_DETECTION_QUEUE_FPS_H
 
 #include <mutex>
 #include <queue>

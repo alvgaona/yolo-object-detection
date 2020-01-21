@@ -1,5 +1,5 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef YOLO_OBJECT_DETECTION_WINDOW_H
+#define YOLO_OBJECT_DETECTION_WINDOW_H
 
 #include <opencv2/opencv.hpp>
 #include <string>

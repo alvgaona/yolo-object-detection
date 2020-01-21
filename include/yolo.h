@@ -1,6 +1,7 @@
-#ifndef YOLO_H
-#define YOLO_H
+#ifndef YOLO_OBJECT_DETECTION_YOLO_H
+#define YOLO_OBJECT_DETECTION_YOLO_H
 
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -22,7 +23,8 @@ class Yolo {
  public:
   Yolo();
   ~Yolo();
-  void Run();
+  void Run(std::filesystem::path& model_path, std::filesystem::path& config_path, std::filesystem::path& classes_path,
+           std::filesystem::path& input_path);
 
  private:
   std::unique_ptr<QueueFps<cv::Mat>> frames_;
@@ -39,6 +41,8 @@ class Yolo {
 
   void CaptureFrames();
   void ProcessFrames();
+
+  void LoadClasses(const std::filesystem::path& filepath);
 };
 
 #endif

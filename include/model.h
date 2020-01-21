@@ -1,5 +1,5 @@
-#ifndef MODEL_H
-#define MODEL_H
+#ifndef YOLO_OBJECT_DETECTION_MODEL_H
+#define YOLO_OBJECT_DETECTION_MODEL_H
 
 #include <opencv2/core.hpp>
 #include <opencv2/dnn.hpp>
