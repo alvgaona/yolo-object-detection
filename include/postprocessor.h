@@ -1,10 +1,14 @@
 #ifndef YOLO_OBJECT_DETECTION_POSTPROCESSOR_H
 #define YOLO_OBJECT_DETECTION_POSTPROCESSOR_H
 
+#include <memory>
+
 #include <opencv2/dnn.hpp>
 #include <opencv2/opencv.hpp>
 
 #include "configuration.h"
+#include "output_layers.h"
+#include "output_layer.h"
 
 class Postprocessor {
  public:

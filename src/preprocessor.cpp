@@ -4,7 +4,7 @@ Preprocessor::Preprocessor(Preprocessor&& source) noexcept {}
 
 void Preprocessor::process(cv::Mat& frame, cv::dnn::Net& net, struct Configuration::FrameProcessingData& data){
   static cv::Mat blob;
-  // Create a 4D blob from a frame.
+
   if (data.input_size.width <= 0) {
     data.input_size.width = frame.cols;
   }
