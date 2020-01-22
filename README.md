@@ -24,8 +24,8 @@ macOS up to version 10.13. Nevertheless, this project works for 10.15 as well.
 - cmake >= 3.11
 - make >= 4.2 (Linux, Mac)
 - OpenCV >= 4.1.2
-- OpenVINO == 2019_R3.1
-- gcc/g++ == 9.2
+- OpenVINO >= 2019_R3.1
+- gcc/g++ >= 9.2
 
 ### Requisites
 
@@ -83,6 +83,10 @@ Look into the [Makefile](./Makefile) to see how the app is built.
 
 TBD
 
+## Coding style
+
+TBD
+
 ## To start using
 
 TBD
@@ -94,3 +98,52 @@ TBD
 ## License
 
 [MIT](./LICENSE)
+
+## Rubric points addressed
+
+### Loops, Functions, I/O
+
+| Point                                                                                          | File            | Lines          |
+|------------------------------------------------------------------------------------------------|-----------------|----------------|
+| The project demonstrates an understanding of C++ functions and control structures.             |                 |                |
+| The project reads data from a file and process the data, or the program writes data to a file. |                 |                |
+| The project accepts user input and processes the input.                                        |                 |                |
+
+### Object Oriented Programming
+
+| Point                                                                            | File            | Lines          |
+|----------------------------------------------------------------------------------|-----------------|----------------|
+| The project uses Object Oriented Programming techniques.                         |                 |                |
+| Classes use appropriate access specifiers for class members.                     |                 |                |
+| Class constructors utilize member initialization lists.                          |                 |                |
+| The project follows the Rule of 5.                                               |                 |                |
+| Classes abstract implementation details from their interfaces.                   |                 |                |
+| Classes encapsulate behavior.                                                    |                 |                |
+| Classes follow an appropriate inheritance hierarchy.                             |                 |                |
+| Overloaded functions allow the same function to operate on different parameters. |                 |                |
+| Derived class functions override virtual base class functions.                   |                 |                |
+| Templates generalize functions in the project.                                   |                 |                |
+
+### Memory Management
+
+| Point                                                                                     | File            | Lines          |
+|-------------------------------------------------------------------------------------------|-----------------|----------------|
+| The project makes use of references in function declarations.                             |                 |                |
+| The project uses destructors appropriately.                                               |                 |                |
+| The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate. |                 |                |
+| The project follows the Rule of 5.                                                        | all             |                |
+| The project uses move semantics to move data, instead of copying it, where possible.      |                 |                |
+| The project uses smart pointers instead of raw pointers.                                  |                 |                | 
+
+### Concurrency
+
+| Point                                        | File            | Lines          |
+|----------------------------------------------|-----------------|----------------|
+| The project uses multithreading.             | [yolo.cpp]      | 27, 28, 47, 49 |
+| A promise and future is used in the project. | -               | -              |
+| A mutex or lock is used in the project.      | [queue_fps.cpp] | 25, 36, 48, 64 |
+| A condition variable is used in the project. | -               | -              |   
+
+
+[yolo.cpp]: ./src/yolo.cpp
+[queue_fps.h]: ./include/queue_fps.h
