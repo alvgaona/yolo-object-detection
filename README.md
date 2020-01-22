@@ -141,7 +141,7 @@ TBD
 |----------------------------------------------|-----------------|----------------|
 | The project uses multithreading.             | [yolo.cpp]      | 27, 28, 47, 49 |
 | A promise and future is used in the project. | -               | -              |
-| A mutex or lock is used in the project.      | [queue_fps.cpp] | 25, 36, 48, 64 |
+| A mutex or lock is used in the project.      | [queue_fps.h]   | 25, 36, 48, 64 |
 | A condition variable is used in the project. | -               | -              |   
 
 
