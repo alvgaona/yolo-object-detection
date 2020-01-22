@@ -111,38 +111,38 @@ TBD
 
 ### Object Oriented Programming
 
-| Point                                                                                          | File            | Lines          |
-|------------------------------------------------------------------------------------------------|-----------------|----------------|
-| The project uses Object Oriented Programming techniques.                                       |                 |                |
-| Classes use appropriate access specifiers for class members.                                   |                 |                |
-| Class constructors utilize member initialization lists.                                        |                 |                |
-| The project follows the Rule of 5.                                                             |                 |                |
-| Classes abstract implementation details from their interfaces.                                 |                 |                |
-| Classes encapsulate behavior.                                                                  |                 |                |
-| Classes follow an appropriate inheritance hierarchy.                                           |                 |                |
-| Overloaded functions allow the same function to operate on different parameters.               |                 |                |
-| Derived class functions override virtual base class functions.                                 |                 |                |
-| Templates generalize functions in the project.                                                 |                 |                |
+| Point                                                                            | File            | Lines          |
+|----------------------------------------------------------------------------------|-----------------|----------------|
+| The project uses Object Oriented Programming techniques.                         |                 |                |
+| Classes use appropriate access specifiers for class members.                     |                 |                |
+| Class constructors utilize member initialization lists.                          |                 |                |
+| The project follows the Rule of 5.                                               |                 |                |
+| Classes abstract implementation details from their interfaces.                   |                 |                |
+| Classes encapsulate behavior.                                                    |                 |                |
+| Classes follow an appropriate inheritance hierarchy.                             |                 |                |
+| Overloaded functions allow the same function to operate on different parameters. |                 |                |
+| Derived class functions override virtual base class functions.                   |                 |                |
+| Templates generalize functions in the project.                                   |                 |                |
 
 ### Memory Management
 
-| Point                                                                                          | File            | Lines          |
-|------------------------------------------------------------------------------------------------|-----------------|----------------|
-| The project makes use of references in function declarations.                                  |                 |                |
-| The project uses destructors appropriately.                                                    |                 |                |
-| The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate.      |                 |                |
-| The project follows the Rule of 5.                                                             | all             |                |
-| The project uses move semantics to move data, instead of copying it, where possible.           |                 |                |
-| The project uses smart pointers instead of raw pointers.                                       |                 |                | 
+| Point                                                                                     | File            | Lines          |
+|-------------------------------------------------------------------------------------------|-----------------|----------------|
+| The project makes use of references in function declarations.                             |                 |                |
+| The project uses destructors appropriately.                                               |                 |                |
+| The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate. |                 |                |
+| The project follows the Rule of 5.                                                        | all             |                |
+| The project uses move semantics to move data, instead of copying it, where possible.      |                 |                |
+| The project uses smart pointers instead of raw pointers.                                  |                 |                | 
 
 ### Concurrency
 
-| Point                                                                                          | File            | Lines          |
-|------------------------------------------------------------------------------------------------|-----------------|----------------|
-| The project uses multithreading.                                                               | [yolo.cpp]      | 27, 28, 47, 49 |
-| A promise and future is used in the project.                                                   | -               | -              |
-| A mutex or lock is used in the project.                                                        | [queue_fps.cpp] | 25, 36, 48, 64 |
-| A condition variable is used in the project.                                                   | -               | -              |   
+| Point                                        | File            | Lines          |
+|----------------------------------------------|-----------------|----------------|
+| The project uses multithreading.             | [yolo.cpp]      | 27, 28, 47, 49 |
+| A promise and future is used in the project. | -               | -              |
+| A mutex or lock is used in the project.      | [queue_fps.cpp] | 25, 36, 48, 64 |
+| A condition variable is used in the project. | -               | -              |   
 
 
 [yolo.cpp]: ./src/yolo.cpp
