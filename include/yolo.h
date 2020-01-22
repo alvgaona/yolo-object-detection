@@ -23,6 +23,13 @@ class Yolo {
  public:
   Yolo();
   ~Yolo();
+  Yolo(const Yolo& source) = delete;
+  Yolo(Yolo&& source) noexcept = delete;
+
+  Yolo& operator=(const Yolo& source) = delete;
+  Yolo& operator=(Yolo&& source) noexcept = delete;
+
+
   void Run(std::filesystem::path& model_path, std::filesystem::path& config_path, std::filesystem::path& classes_path,
            std::filesystem::path& input_path);
 

@@ -11,6 +11,11 @@ class QueueFps : private std::queue<T> {
  public:
   QueueFps();
   ~QueueFps();
+  QueueFps(const QueueFps& source) = delete;
+  QueueFps(QueueFps&& source) noexcept = delete;
+
+  QueueFps& operator=(const QueueFps& source) = delete;
+  QueueFps& operator=(QueueFps&& source) noexcept = delete;
 
   unsigned int GetCounter() { return counter_; }
 

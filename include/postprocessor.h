@@ -10,8 +10,7 @@ class Postprocessor {
  public:
   Postprocessor() = default;
   ~Postprocessor() = default;
-
-  Postprocessor(Postprocessor&& source) noexcept ;
+  c
 
   void process(cv::Mat& frame, cv::dnn::Net& net, const std::vector<cv::Mat>& prediction_outputs,
                const std::vector<std::string>& classes);

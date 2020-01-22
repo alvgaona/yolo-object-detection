@@ -9,6 +9,12 @@ class CmdLineParser {
   CmdLineParser(int argc, const char* argv[]);
   ~CmdLineParser() = default;
 
+  CmdLineParser(const CmdLineParser& source) = delete;
+  CmdLineParser(CmdLineParser&& source) noexcept = delete;
+
+  CmdLineParser& operator=(const CmdLineParser& source) = delete;
+  CmdLineParser& operator=(CmdLineParser&& source) noexcept = delete;
+
   template <typename T>
   T Get(const std::string& cmd) {
     return parser_->get<T>(cmd);

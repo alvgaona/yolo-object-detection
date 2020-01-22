@@ -12,7 +12,7 @@ class Model {
  public:
   Model() = delete;
   ~Model();
-
+  Model(const Model& source) = delete;
   Model(Model&& source) noexcept;
 
   Model& operator=(const Model& source) = delete;

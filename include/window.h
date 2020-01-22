@@ -8,6 +8,11 @@ class Window {
  public:
   Window(const std::string& name, float confidence_threshold);
   ~Window() = default;
+  Window(const Window& source) = delete;
+  Window(Window&& source) noexcept = delete;
+
+  Window& operator=(const Window& source) = delete;
+  Window& operator=(Window&& source) noexcept = delete;
 
   void Build();
   void Show(cv::Mat& frame);
