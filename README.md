@@ -81,11 +81,14 @@ Look into the [Makefile](./Makefile) to see how the app is built.
 
 ## Tests
 
-TBD
+The tests are implemented using [googletest][Google Test] framework.
+These can be found under `test/` directory.
 
 ## Coding style
 
-TBD
+Coding style is addressed by using `clang-format` tool and the configuration can be found in [.clang-format].
+This inherits Google's style rules plus a minor change.
+The documentation regarding Google's convention can be found in this [site][Google C++ Style Guide]
 
 ## To start using
 
@@ -147,3 +150,6 @@ TBD
 
 [yolo.cpp]: ./src/yolo.cpp
 [queue_fps.h]: ./include/queue_fps.h
+[.clang-format]: ./clang-format
+[Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
+[Google Test]: https://github.com/google/googletest
