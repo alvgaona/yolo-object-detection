@@ -14,7 +14,6 @@ void Preprocessor::process(cv::Mat& frame, cv::dnn::Net& net, struct Configurati
 
   cv::dnn::blobFromImage(frame, blob, 1.0, data.input_size, cv::Scalar(), data.rgb, false, CV_8U);
 
-  // Run a model.
   net.setInput(blob, "", data.scale, data.mean);
   if (net.getLayer(0)->outputNameToIndex("im_info") != -1)
   {
