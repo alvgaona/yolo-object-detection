@@ -1,6 +1,6 @@
 # YOLO Object Detection
 
-This project is the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
+This project is the Capstone project in the [Udacity C++ Nanodegree Program][C++ Nanodegree].
 It aims to detect objects from an image or sequence of frames from a video by using the You Only Look Once (YOLO) Deep Neural Network.
 
 Furthermore, this project follows Object Oriented Programming (OOP) and the latest C++ features by using
@@ -9,7 +9,7 @@ STL threads, locks, smart pointers and whatnot.
 ## Installation
 
 This project's core is OpenCV and the Intel Inference Engine from OpenVINO.
-In which you can find more documentation about these two projects in [here](https://opencv.org/) and [here](https://software.intel.com/en-us/openvino-toolkit) respectively.
+In which you can find more documentation about these two projects in [here][OpenCV] and [here][OpenVINO] respectively.
 
 ### Supported Operating Systems
 
@@ -31,7 +31,7 @@ macOS up to version 10.13. Nevertheless, this project works for 10.15 as well.
 
 #### Models
 
-Model weights can be downloaded with this [script](https://github.com/opencv/opencv_extra/blob/master/testdata/dnn/download_models.py).
+Model weights can be downloaded with this [script][Models downloader].
 
 ```bash
 python3 download_models.py
@@ -59,7 +59,7 @@ With HTTPS
 git clone https://github.com/alvgaona/yolo-object-detection.git --recurse-submodules
 ```
 
-This project relies on [googletest](https://github.com/abseil/googletest.git) as a thirdparty library.
+This project relies on [googletest][Google Test] as a thirdparty library.
 
 2. Compile the project.
 
@@ -67,7 +67,7 @@ This project relies on [googletest](https://github.com/abseil/googletest.git) as
 make build
 ```
 
-Look into the [Makefile](./Makefile) to see how the app is built.
+Look into the [Makefile][Makefile] to see how the app is built.
 
 3. Run it.
 
@@ -100,7 +100,7 @@ TBD
 
 ## License
 
-[MIT](./LICENSE)
+[MIT][MIT]
 
 ## Rubric points addressed
 
@@ -153,3 +153,9 @@ TBD
 [.clang-format]: ./.clang-format
 [Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
 [Google Test]: https://github.com/google/googletest
+[MIT]: ./LICENSE
+[Makefile]: ./Makefile
+[Models downloader]: https://github.com/opencv/opencv_extra/blob/master/testdata/dnn/download_models.py
+[OpenCV]: https://opencv.org/
+[OpenVINO]: https://software.intel.com/en-us/openvino-toolkit
+[C++ Nanodegree]: https://www.udacity.com/course/c-plus-plus-nanodegree--nd213
