@@ -150,6 +150,6 @@ TBD
 
 [yolo.cpp]: ./src/yolo.cpp
 [queue_fps.h]: ./include/queue_fps.h
-[.clang-format]: ./clang-format
+[.clang-format]: ./.clang-format
 [Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
 [Google Test]: https://github.com/google/googletest
