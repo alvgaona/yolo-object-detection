@@ -161,8 +161,11 @@ system.
 [yolo.cpp]: src/yolo.cpp
 [queue_fps.h]: ./include/queue_fps.h
 [model.cpp]: src/model/model.cpp
+[model.h]: include/model/model.h
 [detection_output.h]: include/model/detection_output.h
+[detection_output.cpp]: src/model/detection_output.cpp
 [region.h]: include/model/region.h
+[region.cpp]: src/model/region.cpp
 
 [.clang-format]: ./.clang-format
 [Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
