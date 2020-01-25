@@ -110,7 +110,7 @@ system.
 
 [MIT][MIT]
 
-## Class structure (WIP)
+## Class structure
 
 You can find it in [here][Class structure].
 
