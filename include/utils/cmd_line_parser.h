@@ -8,7 +8,6 @@ class CmdLineParser {
  public:
   CmdLineParser(int argc, const char* argv[]);
   ~CmdLineParser() = default;
-
   CmdLineParser(const CmdLineParser& source) = delete;
   CmdLineParser(CmdLineParser&& source) noexcept = delete;
 

@@ -10,6 +10,12 @@ class DetectionOutput : public OutputLayer {
   DetectionOutput(float threshold);
   virtual ~DetectionOutput() override = default;
 
+  DetectionOutput(const DetectionOutput& source) = delete;
+  DetectionOutput(DetectionOutput&& source) noexcept = delete;
+
+  DetectionOutput& operator=(const DetectionOutput& source) = delete;
+  DetectionOutput& operator=(DetectionOutput&& source) noexcept = delete;
+
   void ComputeBoxes(cv::Mat& frame, const std::vector<cv::Mat>& prediction_outputs, std::vector<cv::Rect>& boxes,
                     std::vector<float>& confidences, std::vector<int>& class_ids) override;
 
