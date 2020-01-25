@@ -1,6 +1,6 @@
 @startuml
 
-class OutputLayer {
+class OutputLayer << (I,orchid) >> {
  +{abstract} void ComputeBoxes()
 }
 
@@ -14,9 +14,6 @@ class DetectionOutput {
  +void ComputeBoxes()
 }
 
-OutputLayer <|-- Region
-OutputLayer <|-- DetectionOutput
-
 class Model {
   -std::unique_ptr<cv::dnn::Net> net_
   -std::unique_ptr<Postprocessor> postprocessor_;
@@ -28,16 +25,74 @@ class Model {
 }
 
 class Postprocessor {
-    +void process()
-    +void drawPred()
+  +void Process()
+  +void DrawPredicition()
 }
 
 class Preprocessor {
-    +void process()
+  +void Process()
 }
+
+class Yolo {
+  -std::unique_ptr<QueueFps<cv::Mat>> frames_
+  -std::unique_ptr<QueueFps<cv::Mat>> processed_frames_
+  -std::unique_ptr<QueueFps<std::vector<cv::Mat>>> predictions_
+  -std::unique_ptr<cv::VideoCapture> capturer_
+  -std::unique_ptr<Model> model_
+  -std::vector<std::string> classes_
+  -std::vector<std::thread> threads_
+  -FrameProcessingData data_
+
+  +void Run()
+  -void StartFramesCapture()
+  -void StartFramesProcessing()
+  -void CaptureFrames()
+  -void ProcessFrames()
+  -void LoadClasses()
+}
+
+class QueueFps<T> {
+  -cv::TickMeter tick_meter_
+  -std::mutex mutex_
+  -unsigned int counter_
+  +unsigned int GetCounter()
+  +void Push()
+  +bool Empty()
+  + T Get()
+  +float GetFps()
+  +void Clear()
+}
+
+class Window {
+  -{static} int confidence_threshold_
+  -std::string name_
+  +void Build()
+  +void Show()
+  +void DisplayInfo()
+  -{static} void OnChange()
+}
+
+class CmdLineParser {
+  -int argc_
+  -const char** argv_
+  -std::unique_ptr<cv::CommandLineParser> parser_
+  -std::string keys_
+  +T Get()
+}
+
+OutputLayer <|.. Region
+OutputLayer <|.. DetectionOutput
 
 Model *-- Postprocessor
 Model *-- Preprocessor
+
+Yolo *-- QueueFps
+Yolo *-- Model
+
+Postprocessor ..> OutputLayer
+
+Yolo ..left> Window
+Yolo ..right> CmdLineParser
 
 
 
