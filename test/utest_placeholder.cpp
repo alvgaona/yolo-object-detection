@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
 
-class QueueFpsTest : public ::testing::Test {};
+class PlaceholderTest : public ::testing::Test {};
 
 // TODO: Add tests

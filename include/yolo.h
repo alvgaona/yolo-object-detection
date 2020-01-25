@@ -13,15 +13,16 @@
 #include <opencv2/imgproc.hpp>
 
 #include "configuration.h"
-#include "model.h"
-#include "postprocessor.h"
-#include "preprocessor.h"
+#include "model/model.h"
+#include "model/postprocessor.h"
+#include "model/preprocessor.h"
 #include "queue_fps.h"
-#include "window.h"
+#include "gui/window.h"
 
 class Yolo {
  public:
-  Yolo();
+  Yolo() = delete;
+  Yolo(struct Configuration::FrameProcessingData& data);
   ~Yolo();
   Yolo(const Yolo& source) = delete;
   Yolo(Yolo&& source) noexcept = delete;
@@ -42,6 +43,8 @@ class Yolo {
 
   std::vector<std::string> classes_;
   std::vector<std::thread> threads_;
+
+  Configuration::FrameProcessingData data_;
 
   void StartFramesCapture();
   void StartFramesProcessing();

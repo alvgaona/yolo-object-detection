@@ -1,16 +1,30 @@
+#include <yaml-cpp/yaml.h>
 #include "yolo.h"
-#include "cmd_line_parser.h"
+
+#include "utils/cmd_line_parser.h"
+#include "utils/files.h"
 
 int main(int argc, const char* argv[]) {
   CmdLineParser parser(argc, argv);
 
-  std::filesystem::path model(parser.Get<std::string>("model"));
-  std::filesystem::path config(parser.Get<std::string>("config"));
-  std::filesystem::path classes(parser.Get<std::string>("classes"));
+  std::filesystem::path conf = Files::FindFile(parser.Get<std::string>("conf")).value();
+  YAML::Node yaml_node = YAML::LoadFile(conf.string());
+
+  std::filesystem::path weights = Files::FindFile(yaml_node["weights"].as<std::string>()).value();
+  std::filesystem::path cfg = Files::FindFile(yaml_node["cfg"].as<std::string>());.value();
+  std::filesystem::path classes = Files::FindFile(yaml_node["classes"].as<std::string>()).value();
+
   std::filesystem::path input(parser.Get<std::string>("input"));
 
-  Yolo yolo;
-  yolo.Run(model, config, classes, input);
+  Configuration::FrameProcessingData data;
+  data.mean =
+      cv::Scalar(yaml_node["mean1"].as<double>(), yaml_node["mean2"].as<double>(), yaml_node["mean3"].as<double>());
+  data.rgb = yaml_node["rgb"].as<bool>();
+  data.scale = yaml_node["scale"].as<float>();
+  data.input_size = cv::Size(yaml_node["width"].as<int>(), yaml_node["height"].as<int>());
+
+  Yolo yolo(data);
+  yolo.Run(weights, cfg, classes, input);
 
   return 0;
 }

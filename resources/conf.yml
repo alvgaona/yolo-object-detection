@@ -1,0 +1,10 @@
+weights: yolov3.weights
+cfg: yolov3.cfg
+classes: object_detection_classes_yolov3.txt
+mean1: 0
+mean2: 0
+mean3: 0
+scale: 0.00392
+width: 416
+height: 416
+rgb: true

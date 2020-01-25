@@ -1,11 +1,12 @@
 #include "yolo.h"
 
-Yolo::Yolo() {
+Yolo::Yolo(struct Configuration::FrameProcessingData& data) {
   model_ = nullptr;
   capturer_ = std::make_unique<cv::VideoCapture>();
   frames_ = std::make_unique<QueueFps<cv::Mat>>();
   processed_frames_ = std::make_unique<QueueFps<cv::Mat>>();
   predictions_ = std::make_unique<QueueFps<std::vector<cv::Mat>>>();
+  data_ = std::move(data);
 }
 
 Yolo::~Yolo() {
@@ -64,11 +65,6 @@ void Yolo::CaptureFrames() {
 
 void Yolo::ProcessFrames() {
   std::queue<cv::AsyncArray> futures;
-  Configuration::FrameProcessingData data;
-  data.mean = cv::Scalar(0, 0, 0);
-  data.input_size = cv::Size(Configuration::WIDTH, Configuration::HEIGHT);
-  data.rgb = Configuration::RGB;
-  data.scale = Configuration::SCALE;
 
   while (true) {
     cv::Mat frame;
@@ -78,7 +74,7 @@ void Yolo::ProcessFrames() {
     }
 
     if (!frame.empty()) {
-      model_->process(frame, data);
+      model_->process(frame, data_);
       processed_frames_->Push(frame);
 
       futures.push(model_->ForwardAsync());

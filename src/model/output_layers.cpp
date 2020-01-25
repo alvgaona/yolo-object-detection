@@ -1,4 +1,4 @@
-#include "output_layers.h"
+#include "model/output_layers.h"
 
 std::unique_ptr<OutputLayer> OutputLayers::of(const std::string& type) {
   if (type == "DetectionOutput") {
