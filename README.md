@@ -6,6 +6,9 @@ It aims to detect objects from an image or sequence of frames from a video by us
 Furthermore, this project follows Object Oriented Programming (OOP) and the latest C++ features by using
 STL threads, locks, smart pointers and whatnot.
 
+
+![Overpass detection](images/cover.png)
+
 ## Installation
 
 The core of the project is OpenCV and the Intel Inference Engine from OpenVINO.
@@ -108,7 +111,7 @@ system.
 
 [MIT][MIT]
 
-## Rubric points addressed
+## Rubric points met
 
 ### Loops, Functions, I/O
 
@@ -128,7 +131,7 @@ system.
 | The project follows the Rule of 5.                                               | all                    | -              |
 | Classes abstract implementation details from their interfaces.                   | [region.cpp]           | 5              |
 | Classes encapsulate behavior.                                                    | [model.h], [model.cpp] | -              |
-| Classes follow an appropriate inheritance hierarchy.                             | -                      | -              |
+| Classes follow an appropriate inheritance hierarchy.                             | all                    | -              |
 | Overloaded functions allow the same function to operate on different parameters. | -                      | -              |
 | Derived class functions override virtual base class functions.                   | [detection_output.h]   | 13             |
 | Templates generalize functions in the project.                                   | [queue_fps.h]          | -              |
