@@ -6,26 +6,25 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 project(yolo_object_detection)
 
 find_package(OpenCV 4.1.2 REQUIRED)
+find_package(yaml-cpp 0.6.3 REQUIRED)
 
-# Find all executables
-file(GLOB SOURCES src/*.cpp)
+file(GLOB SOURCES
+    src/*.cpp
+    src/gui/**.cpp
+    src/model/**.cpp
+    src/utils/**.cpp)
 
-# Add GoogleTest library subdirectories
 add_subdirectory(thirdparty/googletest)
 
-# Add the testing executable
-add_executable(test test/utest_queue_fps.cpp)
-
+add_executable(test test/utest_placeholder.cpp)
 target_link_libraries(test gtest_main)
 
-# Add project executable
 add_executable(yolo_object_detection ${SOURCES})
-target_link_libraries(yolo_object_detection ${OpenCV_LIBRARIES})
-
-target_include_directories(yolo_object_detection PUBLIC
+target_link_libraries(yolo_object_detection ${OpenCV_LIBRARIES} ${YAML_CPP_LIBRARIES})
+target_include_directories(yolo_object_detection PRIVATE
     include
     ${OpenCV_INCLUDE_DIRS}
-    )
-
-link_directories(${OpenCV_LIBRARY_DIRS})
-target_compile_definitions(yolo_object_detection PUBLIC ${OpenCV_DEFINITIONS})
+    ${YAML_CPP_INCLUDE_DIR}
+)
+target_link_directories(yolo_object_detection PRIVATE ${OpenCV_LIBRARY_DIRS})
+target_compile_definitions(yolo_object_detection PRIVATE ${OpenCV_DEFINITIONS})
