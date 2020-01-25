@@ -23,17 +23,16 @@ macOS up to version 10.13. Nevertheless, this project works for 10.15 as well.
 
 - cmake >= 3.11
 - make >= 4.2 (Linux, Mac)
+- gcc/g++ >= 9.2
 - OpenCV >= 4.1.2
 - OpenVINO >= 2019_R3.1
-- gcc/g++ >= 9.2
+- yaml-cpp >= 0.6.3
 
 ### Requisites
 
 #### Models
 
 Model weights can be downloaded with this [script][Models downloader].
-
-![Download models](images/download_models.gif)
 
 A good place to store these models is `resources/` under a `models/` directory that you have to create.
 
@@ -74,11 +73,7 @@ Look into the [Makefile][Makefile] to see how the app is built.
 
 3. Run it.
 
-```bash
- ./build/yolo_object_detection \
- --conf=conf.yml
- --input=<prefix>/yolo-object-detection/resources/videos/overpass.mp4
-```
+Go to [usage](#usage).
 
 ## Tests
 
@@ -91,13 +86,23 @@ Coding style is addressed by using `clang-format` tool and the configuration can
 This inherits Google's style rules plus a minor change.
 The documentation regarding Google's convention can be found in this [site][Google C++ Style Guide].
 
-## To start using
+## Usage
 
-TBD
+Once built the binary can parse inputs such as a configuration file and the input for the
+system.
 
-## Contributing
+**Parameters**
 
-TBD
+* `input`: Absolute path to a resource (image or video).
+* `configuration`: Name of a YAML file.
+
+**How to run it**
+
+```bash
+./build/yolo_object_detection \
+ --configuration=conf.yml \
+ --input=$(realpath resources/videos/overpass.mp4)
+```
 
 ## License
 
@@ -107,37 +112,37 @@ TBD
 
 ### Loops, Functions, I/O
 
-| Point                                                                                          | File            | Lines          |
-|------------------------------------------------------------------------------------------------|-----------------|----------------|
-| The project demonstrates an understanding of C++ functions and control structures.             |                 |                |
-| The project reads data from a file and process the data, or the program writes data to a file. |                 |                |
-| The project accepts user input and processes the input.                                        |                 |                |
+| Point                                                                                          | File       | Lines          |
+|------------------------------------------------------------------------------------------------|------------|----------------|
+| The project demonstrates an understanding of C++ functions and control structures.             | all        | -              |
+| The project reads data from a file and process the data, or the program writes data to a file. | [main.cpp] | 11-15          |
+| The project accepts user input and processes the input.                                        | [main.cpp] | 8,10,17        |
 
 ### Object Oriented Programming
 
-| Point                                                                            | File            | Lines          |
-|----------------------------------------------------------------------------------|-----------------|----------------|
-| The project uses Object Oriented Programming techniques.                         |                 |                |
-| Classes use appropriate access specifiers for class members.                     |                 |                |
-| Class constructors utilize member initialization lists.                          |                 |                |
-| The project follows the Rule of 5.                                               |                 |                |
-| Classes abstract implementation details from their interfaces.                   |                 |                |
-| Classes encapsulate behavior.                                                    |                 |                |
-| Classes follow an appropriate inheritance hierarchy.                             |                 |                |
-| Overloaded functions allow the same function to operate on different parameters. |                 |                |
-| Derived class functions override virtual base class functions.                   |                 |                |
-| Templates generalize functions in the project.                                   |                 |                |
+| Point                                                                            | File                   | Lines          |
+|----------------------------------------------------------------------------------|------------------------|----------------|
+| The project uses Object Oriented Programming techniques.                         | all                    | -              |
+| Classes use appropriate access specifiers for class members.                     | all                    | -              |
+| Class constructors utilize member initialization lists.                          | [detection_output.cpp] | 3              |
+| The project follows the Rule of 5.                                               | all                    | -              |
+| Classes abstract implementation details from their interfaces.                   | [region.cpp]           | 5              |
+| Classes encapsulate behavior.                                                    | [model.h], [model.cpp] | -              |
+| Classes follow an appropriate inheritance hierarchy.                             | -                      | -              |
+| Overloaded functions allow the same function to operate on different parameters. | -                      | -              |
+| Derived class functions override virtual base class functions.                   | [detection_output.h]   | 13             |
+| Templates generalize functions in the project.                                   | [queue_fps.h]          | -              |
 
 ### Memory Management
 
 | Point                                                                                     | File            | Lines          |
 |-------------------------------------------------------------------------------------------|-----------------|----------------|
-| The project makes use of references in function declarations.                             |                 |                |
-| The project uses destructors appropriately.                                               |                 |                |
-| The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate. |                 |                |
-| The project follows the Rule of 5.                                                        | all             |                |
-| The project uses move semantics to move data, instead of copying it, where possible.      |                 |                |
-| The project uses smart pointers instead of raw pointers.                                  |                 |                | 
+| The project makes use of references in function declarations.                             | all             | -              |
+| The project uses destructors appropriately.                                               | all             | -              |
+| The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate. | [model.cpp]     | 32-34          |
+| The project follows the Rule of 5.                                                        | all             | -              |
+| The project uses move semantics to move data, instead of copying it, where possible.      | [model.cpp]     | 6-8            |
+| The project uses smart pointers instead of raw pointers.                                  | [yolo.cpp]      | 38-42          | 
 
 ### Concurrency
 
@@ -149,8 +154,13 @@ TBD
 | A condition variable is used in the project. | -               | -              |   
 
 
+[main.cpp]: src/main.cpp
 [yolo.cpp]: src/yolo.cpp
 [queue_fps.h]: ./include/queue_fps.h
+[model.cpp]: src/model/model.cpp
+[detection_output.h]: include/model/detection_output.h
+[region.h]: include/model/region.h
+
 [.clang-format]: ./.clang-format
 [Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
 [Google Test]: https://github.com/google/googletest
