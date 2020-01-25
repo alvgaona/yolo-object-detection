@@ -19,7 +19,7 @@ class OutputLayers {
   OutputLayers& operator=(const OutputLayers& source) = delete;
   OutputLayers& operator=(OutputLayers&& source) noexcept = delete;
 
-  static std::unique_ptr<OutputLayer> of(const std::string& type);
+  static std::unique_ptr<OutputLayer> of(const std::string& type, float threshold);
 };
 
 #endif

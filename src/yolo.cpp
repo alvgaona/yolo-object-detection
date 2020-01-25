@@ -1,6 +1,6 @@
 #include "yolo.h"
 
-Yolo::Yolo(struct Configuration::FrameProcessingData& data) {
+Yolo::Yolo(struct YoloUtils::FrameProcessingData& data) {
   model_ = nullptr;
   capturer_ = std::make_unique<cv::VideoCapture>();
   frames_ = std::make_unique<QueueFps<cv::Mat>>();
@@ -15,12 +15,12 @@ Yolo::~Yolo() {
 
 void Yolo::Run(std::filesystem::path& model_path, std::filesystem::path& config_path,
                std::filesystem::path& classes_path, std::filesystem::path& input_path) {
-  Window window("YOLO Object Detection", Configuration::THRESHOLD);
+  Window window("YOLO Object Detection", data_.threshold);
   window.Build();
 
   LoadClasses(classes_path);
 
-  Model model = Model::Init(cv::String(model_path), cv::String(config_path));
+  Model model = Model::Init(cv::String(model_path), cv::String(config_path), data_.nms_threshold);
   model_ = std::make_unique<Model>(std::move(model));
 
   capturer_->open(cv::String(input_path));

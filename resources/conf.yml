@@ -8,3 +8,5 @@ scale: 0.00392
 width: 416
 height: 416
 rgb: true
+nms_threshold: 0.4
+threshold: 0.5

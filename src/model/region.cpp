@@ -1,5 +1,7 @@
 #include "model/region.h"
 
+Region::Region(float threshold) : threshold_(threshold) {}
+
 void Region::ComputeBoxes(cv::Mat& frame, const std::vector<cv::Mat>& prediction_outputs, std::vector<cv::Rect>& boxes,
                           std::vector<float> &confidences, std::vector<int>& class_ids) {
   for (const auto& prediction_output : prediction_outputs) {
@@ -12,7 +14,7 @@ void Region::ComputeBoxes(cv::Mat& frame, const std::vector<cv::Mat>& prediction
       cv::Point classIdPoint;
       double confidence;
       cv::minMaxLoc(scores, nullptr, &confidence, nullptr, &classIdPoint);
-      if (confidence > Configuration::THRESHOLD) {
+      if (confidence > threshold_) {
         int centerX = static_cast<int>(data[0] * frame.cols);
         int centerY = static_cast<int>(data[1] * frame.rows);
         int width = static_cast<int>(data[2] * frame.cols);

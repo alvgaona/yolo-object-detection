@@ -12,7 +12,7 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 
-#include "configuration.h"
+#include "utils/yolo_utils.h"
 #include "model/model.h"
 #include "model/postprocessor.h"
 #include "model/preprocessor.h"
@@ -22,7 +22,7 @@
 class Yolo {
  public:
   Yolo() = delete;
-  Yolo(struct Configuration::FrameProcessingData& data);
+  Yolo(struct YoloUtils::FrameProcessingData& data);
   ~Yolo();
   Yolo(const Yolo& source) = delete;
   Yolo(Yolo&& source) noexcept = delete;
@@ -44,7 +44,7 @@ class Yolo {
   std::vector<std::string> classes_;
   std::vector<std::thread> threads_;
 
-  Configuration::FrameProcessingData data_;
+  YoloUtils::FrameProcessingData data_;
 
   void StartFramesCapture();
   void StartFramesProcessing();

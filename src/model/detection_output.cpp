@@ -1,5 +1,7 @@
 #include "model/detection_output.h"
 
+DetectionOutput::DetectionOutput(float threshold) : threshold_(threshold) {}
+
 void DetectionOutput::ComputeBoxes(cv::Mat& frame, const std::vector<cv::Mat>& prediction_outputs,
                                    std::vector<cv::Rect>& boxes, std::vector<float> &confidences,
                                    std::vector<int>& class_ids) {
@@ -8,7 +10,7 @@ void DetectionOutput::ComputeBoxes(cv::Mat& frame, const std::vector<cv::Mat>& p
     auto data = (float*)prediction_output.data;
     for (size_t i = 0; i < prediction_output.total(); i += 7) {
       float confidence = data[i + 2];
-      if (confidence > Configuration::THRESHOLD) {
+      if (confidence > threshold_) {
         int left = static_cast<int>(data[i + 3]);
         int top = static_cast<int>(data[i + 4]);
         int right = static_cast<int>(data[i + 5]);

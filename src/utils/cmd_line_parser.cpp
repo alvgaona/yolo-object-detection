@@ -3,7 +3,7 @@
 CmdLineParser::CmdLineParser(int argc, const char** argv) {
   this->keys_ =
       "{ help  h      | | Print help message. }"
-      "{ conf  c      | | Configuration file  }"
+      "{ conf  c      | | YoloUtils file  }"
       "{ input i      | | Input               }";
   this->parser_ = std::make_unique<cv::CommandLineParser>(argc, argv, keys_);
   this->argc_ = argc;

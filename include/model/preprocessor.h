@@ -3,7 +3,7 @@
 
 #include <opencv2/opencv.hpp>
 
-#include "configuration.h"
+#include "utils/yolo_utils.h"
 
 class Preprocessor {
  public:
@@ -15,7 +15,7 @@ class Preprocessor {
   Preprocessor& operator=(const Preprocessor& source) = delete;
   Preprocessor& operator=(Preprocessor&& source) noexcept = delete;
 
-  void process(cv::Mat& frame, cv::dnn::Net& net, struct Configuration::FrameProcessingData& data);
+  void process(cv::Mat& frame, cv::dnn::Net& net, struct YoloUtils::FrameProcessingData& data);
 };
 
 #endif

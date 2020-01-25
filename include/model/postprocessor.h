@@ -6,7 +6,7 @@
 #include <opencv2/dnn.hpp>
 #include <opencv2/opencv.hpp>
 
-#include "configuration.h"
+#include "utils/yolo_utils.h"
 #include "output_layers.h"
 #include "output_layer.h"
 
@@ -21,7 +21,7 @@ class Postprocessor {
   Postprocessor& operator=(Postprocessor&& source) noexcept = delete;
 
   void process(cv::Mat& frame, cv::dnn::Net& net, const std::vector<cv::Mat>& prediction_outputs,
-               const std::vector<std::string>& classes);
+               const std::vector<std::string>& classes, float threshold, float nms_threshold);
 
  private:
   void drawPred(const std::vector<std::string>& classes, int classId, float conf, int left, int top, int right,
