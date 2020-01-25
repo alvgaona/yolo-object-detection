@@ -15,7 +15,7 @@ class Preprocessor {
   Preprocessor& operator=(const Preprocessor& source) = delete;
   Preprocessor& operator=(Preprocessor&& source) noexcept = delete;
 
-  void process(cv::Mat& frame, cv::dnn::Net& net, struct YoloUtils::FrameProcessingData& data);
+  void Process(cv::Mat& frame, cv::dnn::Net& net, struct YoloUtils::FrameProcessingData& data);
 };
 
 #endif

@@ -20,11 +20,11 @@ class Postprocessor {
   Postprocessor& operator=(const Postprocessor& source) = delete;
   Postprocessor& operator=(Postprocessor&& source) noexcept = delete;
 
-  void process(cv::Mat& frame, cv::dnn::Net& net, const std::vector<cv::Mat>& prediction_outputs,
+  void Process(cv::Mat& frame, cv::dnn::Net& net, const std::vector<cv::Mat>& prediction_outputs,
                const std::vector<std::string>& classes, float threshold, float nms_threshold);
 
  private:
-  void drawPred(const std::vector<std::string>& classes, int classId, float conf, int left, int top, int right,
+  void DrawPrediction(const std::vector<std::string>& classes, int classId, float conf, int left, int top, int right,
                 int bottom, cv::Mat& frame);
 };
 

@@ -3,6 +3,8 @@
 
 #include <opencv2/core.hpp>
 
+#include <filesystem>
+#include <optional>
 #include <string>
 
 namespace YoloUtils {
@@ -14,6 +16,15 @@ struct FrameProcessingData {
   float threshold;
   float nms_threshold;
 };
+
+static std::optional<std::filesystem::path> FindFile(const std::string& filename) {
+  for (auto& p : std::filesystem::recursive_directory_iterator(std::filesystem::current_path())) {
+    if (p.path().filename().string() == filename) {
+      return std::optional<std::filesystem::path>{p.path()};
+    }
+  }
+  return std::nullopt;
+}
 }  // namespace YoloUtils
 
 #endif

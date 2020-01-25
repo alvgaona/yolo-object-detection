@@ -2,7 +2,7 @@
 
 Postprocessor::Postprocessor(Postprocessor&& source) noexcept {}
 
-void Postprocessor::process(cv::Mat& frame, cv::dnn::Net& net, const std::vector<cv::Mat>& prediction_outputs,
+void Postprocessor::Process(cv::Mat& frame, cv::dnn::Net& net, const std::vector<cv::Mat>& prediction_outputs,
                             const std::vector<std::string>& classes,
                             float threshold, float nms_threshold) {
   static std::vector<int> outLayers = net.getUnconnectedOutLayers();
@@ -20,12 +20,12 @@ void Postprocessor::process(cv::Mat& frame, cv::dnn::Net& net, const std::vector
   cv::dnn::NMSBoxes(boxes, confidences, threshold, nms_threshold, indices);
   for (auto &idx : indices) {
     cv::Rect box = boxes[idx];
-    drawPred(classes, class_ids[idx], confidences[idx], box.x, box.y, box.x + box.width,
+    DrawPrediction(classes, class_ids[idx], confidences[idx], box.x, box.y, box.x + box.width,
              box.y + box.height, frame);
   }
 }
 
-void Postprocessor::drawPred(const std::vector<std::string>& classes, int classId, float conf, int left, int top, int right,
+void Postprocessor::DrawPrediction(const std::vector<std::string>& classes, int classId, float conf, int left, int top, int right,
                              int bottom, cv::Mat& frame) {
   rectangle(frame, cv::Point(left, top), cv::Point(right, bottom), cv::Scalar(0, 255, 0));
 

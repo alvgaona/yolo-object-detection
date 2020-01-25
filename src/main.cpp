@@ -1,18 +1,18 @@
 #include <yaml-cpp/yaml.h>
-#include "yolo.h"
 
+#include "yolo.h"
 #include "utils/cmd_line_parser.h"
-#include "utils/files.h"
+#include "utils/yolo_utils.h"
 
 int main(int argc, const char* argv[]) {
   CmdLineParser parser(argc, argv);
 
-  std::filesystem::path conf = Files::FindFile(parser.Get<std::string>("conf")).value();
+  std::filesystem::path conf = YoloUtils::FindFile(parser.Get<std::string>("configuration")).value();
   YAML::Node yaml_node = YAML::LoadFile(conf.string());
 
-  std::filesystem::path weights = Files::FindFile(yaml_node["weights"].as<std::string>()).value();
-  std::filesystem::path cfg = Files::FindFile(yaml_node["cfg"].as<std::string>()).value();
-  std::filesystem::path classes = Files::FindFile(yaml_node["classes"].as<std::string>()).value();
+  std::filesystem::path weights = YoloUtils::FindFile(yaml_node["weights"].as<std::string>()).value();
+  std::filesystem::path cfg = YoloUtils::FindFile(yaml_node["cfg"].as<std::string>()).value();
+  std::filesystem::path classes = YoloUtils::FindFile(yaml_node["classes"].as<std::string>()).value();
 
   std::filesystem::path input(parser.Get<std::string>("input"));
 

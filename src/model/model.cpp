@@ -25,13 +25,13 @@ Model::Model(Model&& source) noexcept {
   source.nms_threshold_ = 0.0;
 }
 
-void Model::process(cv::Mat& frame, const std::vector<cv::Mat>& outlayers, const std::vector<std::string>& classes) {
+void Model::Process(cv::Mat& frame, const std::vector<cv::Mat>& outlayers, const std::vector<std::string>& classes) {
   std::vector<cv::String> outlayer_names = net_->getUnconnectedOutLayersNames();
-  postprocessor_->process(frame, *net_, outlayers, classes, threshold_, nms_threshold_);
+  postprocessor_->Process(frame, *net_, outlayers, classes, threshold_, nms_threshold_);
 }
 
-void Model::process(cv::Mat& frame, struct YoloUtils::FrameProcessingData& data) {
-  preprocessor_->process(frame, *net_, data);
+void Model::Process(cv::Mat& frame, struct YoloUtils::FrameProcessingData& data) {
+  preprocessor_->Process(frame, *net_, data);
 }
 
 Model Model::Init(const cv::String& model, const cv::String& config, float threshold, float nms_threshold, const cv::String& framework,

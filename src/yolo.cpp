@@ -36,7 +36,7 @@ void Yolo::Run(std::filesystem::path& model_path, std::filesystem::path& config_
     std::vector<cv::Mat> outs = predictions_->Get();
     cv::Mat frame = processed_frames_->Get();
 
-    model_->process(frame, outs, classes_);
+    model_->Process(frame, outs, classes_);
 
     window.DisplayInfo(frame, frames_->GetFps(), frames_->GetCounter(), predictions_->GetFps(),
                        predictions_->GetCounter());
@@ -74,7 +74,7 @@ void Yolo::ProcessFrames() {
     }
 
     if (!frame.empty()) {
-      model_->process(frame, data_);
+      model_->Process(frame, data_);
       processed_frames_->Push(frame);
 
       futures.push(model_->ForwardAsync());

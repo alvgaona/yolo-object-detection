@@ -22,8 +22,8 @@ class Model {
                     const cv::String& framework = "", cv::dnn::Backend backend = cv::dnn::DNN_BACKEND_INFERENCE_ENGINE,
                     cv::dnn::Target target = cv::dnn::DNN_TARGET_CPU);
 
-  void process(cv::Mat& frame, struct YoloUtils::FrameProcessingData& data);
-  void process(cv::Mat& frame, const std::vector<cv::Mat>& outlayers, const std::vector<std::string>& classes);
+  void Process(cv::Mat& frame, struct YoloUtils::FrameProcessingData& data);
+  void Process(cv::Mat& frame, const std::vector<cv::Mat>& outlayers, const std::vector<std::string>& classes);
   cv::AsyncArray ForwardAsync();
 
  private:

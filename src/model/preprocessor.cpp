@@ -2,7 +2,7 @@
 
 Preprocessor::Preprocessor(Preprocessor&& source) noexcept {}
 
-void Preprocessor::process(cv::Mat& frame, cv::dnn::Net& net, struct YoloUtils::FrameProcessingData& data){
+void Preprocessor::Process(cv::Mat& frame, cv::dnn::Net& net, struct YoloUtils::FrameProcessingData& data){
   static cv::Mat blob;
 
   if (data.input_size.width <= 0) {
