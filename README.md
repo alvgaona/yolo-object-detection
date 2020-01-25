@@ -111,11 +111,10 @@ system.
 
 [MIT][MIT]
 
-## Class structure
+## Class structure (WIP)
 
 You can find it in [here][Class structure].
 
-Still WIP
 
 ## Rubric points met
 

@@ -1,4 +1,5 @@
-# Class structure
+# Class structure (WIP)
+
 
 In this document you can take a look at the system's class structure.
 
