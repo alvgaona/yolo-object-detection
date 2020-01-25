@@ -8,8 +8,8 @@ STL threads, locks, smart pointers and whatnot.
 
 ## Installation
 
-This project's core is OpenCV and the Intel Inference Engine from OpenVINO.
-In which you can find more documentation about these two projects in [here][OpenCV] and [here][OpenVINO] respectively.
+The core of the project is OpenCV and the Intel Inference Engine from OpenVINO.
+You can find more documentation about these two projects in [here][OpenCV] and [here][OpenVINO] respectively.
 
 ### Supported Operating Systems
 
@@ -33,15 +33,18 @@ macOS up to version 10.13. Nevertheless, this project works for 10.15 as well.
 
 Model weights can be downloaded with this [script][Models downloader].
 
-```bash
-python3 download_models.py
-```
+![Download models](images/download_models.gif)
 
 A good place to store these models is `resources/` under a `models/` directory that you have to create.
 
 #### OpenCV and OpenVINO.
 
-TBD
+In order to install both libraries you can follow these installation links below.
+
+- [OpenVINO for macOS installation guide][OpenVINO for macOS].
+- [OpenVINO for Linux installation guide][OpenVINO for Linux].
+
+**Note**: macOS is only supported until version 10.13. However, this project works with 10.15 even if the installer says it's not supported.
 
 ### Build instructions
 
@@ -73,10 +76,8 @@ Look into the [Makefile][Makefile] to see how the app is built.
 
 ```bash
  ./build/yolo_object_detection \
-  --model="<prefix>/yolo-object-detection/resources/models/yolov3.weights" \
-  --config="<prefix>/yolo-object-detection/resources/cfg/yolov3.cfg" \
-  --classes="<prefix>/yolo-object-detection/resources/classes/object_detection_classes_yolov3.txt" \
-  --input="<prefix>/yolo-object-detection/resources/videos/overpass.mp4"
+ --conf=conf.yml
+ --input=<prefix>/yolo-object-detection/resources/videos/overpass.mp4
 ```
 
 ## Tests
@@ -88,7 +89,7 @@ These can be found under `test/` directory.
 
 Coding style is addressed by using `clang-format` tool and the configuration can be found in [.clang-format].
 This inherits Google's style rules plus a minor change.
-The documentation regarding Google's convention can be found in this [site][Google C++ Style Guide]
+The documentation regarding Google's convention can be found in this [site][Google C++ Style Guide].
 
 ## To start using
 
@@ -148,7 +149,7 @@ TBD
 | A condition variable is used in the project. | -               | -              |   
 
 
-[yolo.cpp]: ./src/yolo.cpp
+[yolo.cpp]: src/yolo.cpp
 [queue_fps.h]: ./include/queue_fps.h
 [.clang-format]: ./.clang-format
 [Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
@@ -159,3 +160,6 @@ TBD
 [OpenCV]: https://opencv.org/
 [OpenVINO]: https://software.intel.com/en-us/openvino-toolkit
 [C++ Nanodegree]: https://www.udacity.com/course/c-plus-plus-nanodegree--nd213
+
+[OpenVINO for Linux]: https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html
+[OpenVINO for macOS]: https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html
