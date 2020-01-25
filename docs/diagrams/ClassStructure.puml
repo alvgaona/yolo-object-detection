@@ -1,0 +1,44 @@
+@startuml
+
+class OutputLayer {
+ +{abstract} void ComputeBoxes()
+}
+
+class Region {
+ -float threshold_
+ +void ComputeBoxes()
+}
+
+class DetectionOutput {
+ -float threshold_
+ +void ComputeBoxes()
+}
+
+OutputLayer <|-- Region
+OutputLayer <|-- DetectionOutput
+
+class Model {
+  -std::unique_ptr<cv::dnn::Net> net_
+  -std::unique_ptr<Postprocessor> postprocessor_;
+  -std::unique_ptr<Preprocessor> preprocessor_;
+  -float threshold_
+  -float nms_threshold_
+  +{static} Model Init()
+  - Model()
+}
+
+class Postprocessor {
+    +void process()
+    +void drawPred()
+}
+
+class Preprocessor {
+    +void process()
+}
+
+Model *-- Postprocessor
+Model *-- Preprocessor
+
+
+
+@enduml

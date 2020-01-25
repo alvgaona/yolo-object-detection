@@ -111,6 +111,12 @@ system.
 
 [MIT][MIT]
 
+## Class structure
+
+You can find it in [here][Class structure].
+
+Still WIP
+
 ## Rubric points met
 
 ### Loops, Functions, I/O
@@ -157,6 +163,18 @@ system.
 | A condition variable is used in the project. | -               | -              |   
 
 
+[Class structure]: docs/ClassStructure.md
+[.clang-format]: ./.clang-format
+[MIT]: ./LICENSE
+[Makefile]: ./Makefile
+
+[Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
+[Google Test]: https://github.com/google/googletest
+[Models downloader]: https://github.com/opencv/opencv_extra/blob/master/testdata/dnn/download_models.py
+[OpenCV]: https://opencv.org/
+[OpenVINO]: https://software.intel.com/en-us/openvino-toolkit
+[C++ Nanodegree]: https://www.udacity.com/course/c-plus-plus-nanodegree--nd213
+
 [main.cpp]: src/main.cpp
 [yolo.cpp]: src/yolo.cpp
 [queue_fps.h]: ./include/queue_fps.h
@@ -166,16 +184,6 @@ system.
 [detection_output.cpp]: src/model/detection_output.cpp
 [region.h]: include/model/region.h
 [region.cpp]: src/model/region.cpp
-
-[.clang-format]: ./.clang-format
-[Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
-[Google Test]: https://github.com/google/googletest
-[MIT]: ./LICENSE
-[Makefile]: ./Makefile
-[Models downloader]: https://github.com/opencv/opencv_extra/blob/master/testdata/dnn/download_models.py
-[OpenCV]: https://opencv.org/
-[OpenVINO]: https://software.intel.com/en-us/openvino-toolkit
-[C++ Nanodegree]: https://www.udacity.com/course/c-plus-plus-nanodegree--nd213
 
 [OpenVINO for Linux]: https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html
 [OpenVINO for macOS]: https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_macos.html
