@@ -43,3 +43,14 @@ cmake-build-debug/
 *.exe
 *.out
 *.app
+
+# Models
+*.tar.gz
+*.tgz
+*.caffemodel
+*.pb
+*.weights
+*.t7
+*.prototxt
+*.net
+*.onnx
