@@ -2,7 +2,7 @@
 #define YOLO_OBJECT_DETECTION_REGION_H
 
 #include "configuration.h"
-#include "output_layer.h"
+#include "model/output_layer.h"
 
 class Region : public OutputLayer {
  public:

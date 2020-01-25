@@ -2,6 +2,7 @@
 #define YOLO_OBJECT_DETECTION_WINDOW_H
 
 #include <opencv2/opencv.hpp>
+
 #include <string>
 
 class Window {

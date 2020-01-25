@@ -1,4 +1,4 @@
-#include "window.h"
+#include "gui/window.h"
 
 int Window::confidence_threshold_;
 

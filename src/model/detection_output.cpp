@@ -1,4 +1,4 @@
-#include "detection_output.h"
+#include "model/detection_output.h"
 
 void DetectionOutput::ComputeBoxes(cv::Mat& frame, const std::vector<cv::Mat>& prediction_outputs,
                                    std::vector<cv::Rect>& boxes, std::vector<float> &confidences,
