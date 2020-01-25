@@ -3,8 +3,7 @@
 This project is the Capstone project in the [Udacity C++ Nanodegree Program][C++ Nanodegree].
 It aims to detect objects from an image or sequence of frames from a video by using the You Only Look Once (YOLO) Deep Neural Network.
 
-Furthermore, this project follows Object Oriented Programming (OOP) and the latest C++ features by using
-STL threads, locks, smart pointers and whatnot.
+Furthermore, this project follows Object Oriented Programming (OOP) and the latest C++ features (e. g. STL threads, locks, smart pointers).
 
 
 ![Overpass detection](images/cover.png)
